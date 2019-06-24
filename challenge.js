@@ -93,4 +93,6 @@ pause.addEventListener('click', (event) => {
 submit.addEventListener('click', (event) => {
     let comment = document.getElementById("comment-form");
     addComment(comment[0].value);
+    event.preventDefault();
+    comment.reset();
 });
