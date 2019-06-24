@@ -33,6 +33,21 @@ function startTimer() {
     timer = window.setInterval(incrementCounter, 1000);
 };
 
+function disableButtons() {
+    buttons = document.querySelectorAll("button");
+    buttons.forEach( (button) => {
+        button.disabled = true;
+    });
+    pause.disabled = false;
+};
+
+function enableButtons() {
+    buttons = document.querySelectorAll("button");
+    buttons.forEach( (button) => {
+        button.disabled = false;
+    });
+};
+
 function addComment(comment) {
     let comments = document.getElementsByClassName("comments")
     newComment = document.createElement('p');
@@ -64,10 +79,12 @@ like.addEventListener('click', (event) => {
 pause.addEventListener('click', (event) => {
     if (pause.innerText == "pause") {
         window.clearInterval(timer);
+        disableButtons();
         pause.innerText = "resume";
     }
     else {
         startTimer()
+        enableButtons();
         pause.innerText = "pause";
     }
 });
